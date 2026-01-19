@@ -60,3 +60,5 @@ docker network ls
 
 * すべてOK → **現状は安定**
 * NGあり → **変更せず状況を記録**し、snapshotを保存
+
+- ASR /health: 502 Bad Gateway（2026-01-19）

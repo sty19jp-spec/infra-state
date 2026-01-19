@@ -33,3 +33,22 @@ ss -lntp
 - 何を採ったか（ファイル名）
 - Driveフォルダリンク（context.mdのリンクでOK）
 - その時点の重要トピック（例: ASRが502）
+
+---
+
+# 5. Snapshot Procedure（固定セット：出力をファイル化）
+
+## 5-1. まず作業名（TASK）を決める
+例: ASR502 / NPMFix / N8nUpgrade
+
+## 5-2. Before（変更前）
+```bash
+# 実行場所: SSH（VPS）
+TASK="ASR502"
+D="~/snapshot/$(date +%F)_${TASK}_before"
+mkdir -p "$D"
+
+docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}' > "$D/docker_ps.txt"
+docker network ls > "$D/docker_network_ls.txt"
+docker inspect npm > "$D/npm_inspect.json"
+ss -lntp > "$D/ss_lntp.txt"

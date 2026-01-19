@@ -1,0 +1,23 @@
+checked_at: "2026-01-19"
+container: "npm"
+image: "jc21/nginx-proxy-manager:latest"
+restart_policy: "unless-stopped"
+binds:
+  - "/opt/stacks/reverse-proxy/data:/data"
+  - "/opt/stacks/reverse-proxy/letsencrypt:/etc/letsencrypt"
+ports:
+  - "80:80/tcp"
+  - "81:81/tcp"
+  - "443:443/tcp"
+networks:
+  bridge:
+    ip: "172.17.0.2"
+    gateway: "172.17.0.1"
+  docker_default:
+    ip: "172.20.0.12"
+    gateway: "172.20.0.1"
+  shared_net:
+    ip: "172.18.0.3"
+    gateway: "172.18.0.1"
+notes:
+  - "ASR をホストで 0.0.0.0:8000 に bind すれば、NPMは gateway 経由で到達できる可能性が高い。"

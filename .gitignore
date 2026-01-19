@@ -1,0 +1,13 @@
+# secrets
+.env
+*.key
+*.pem
+
+# local
+.DS_Store
+Thumbs.db
+
+# large logs (keep in Google Drive)
+snapshots/
+*.tar.gz
+*.zip

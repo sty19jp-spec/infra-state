@@ -1,0 +1,48 @@
+checked_at: "2026-01-19"
+containers:
+  - name: "docker-nginx-1"
+    image: "nginx:latest"
+    ports: ["80/tcp"]
+  - name: "docker-api-1"
+    image: "langgenius/dify-api:1.11.3"
+    ports: ["5001/tcp"]
+  - name: "docker-worker-1"
+    image: "langgenius/dify-api:1.11.3"
+    ports: ["5001/tcp"]
+  - name: "docker-worker_beat-1"
+    image: "langgenius/dify-api:1.11.3"
+    ports: ["5001/tcp"]
+  - name: "docker-plugin_daemon-1"
+    image: "langgenius/dify-plugin-daemon:0.5.2-local"
+    ports: []
+  - name: "docker-db_postgres-1"
+    image: "postgres:15-alpine"
+    ports: ["5432/tcp"]
+  - name: "docker-redis-1"
+    image: "redis:6-alpine"
+    ports: ["6379/tcp"]
+  - name: "docker-web-1"
+    image: "langgenius/dify-web:1.11.3"
+    ports: ["3000/tcp"]
+  - name: "docker-weaviate-1"
+    image: "semitechnologies/weaviate:1.27.0"
+    ports: []
+  - name: "docker-sandbox-1"
+    image: "langgenius/dify-sandbox:0.2.12"
+    ports: []
+  - name: "docker-ssrf_proxy-1"
+    image: "ubuntu/squid:latest"
+    ports: ["3128/tcp"]
+  - name: "n8n"
+    image: "n8nio/n8n:latest"
+    ports: ["5678/tcp"]
+  - name: "npm"
+    image: "jc21/nginx-proxy-manager:latest"
+    ports: ["80/tcp", "81/tcp", "443/tcp"]
+networks:
+  - "bridge"
+  - "docker_default"
+  - "docker_ssrf_proxy_network"
+  - "host"
+  - "none"
+  - "shared_net"

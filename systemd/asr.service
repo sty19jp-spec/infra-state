@@ -1,0 +1,16 @@
+[Unit]
+Description=ASR FastAPI server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/asr
+EnvironmentFile=/opt/asr/.env
+ExecStart=/opt/asr/venv/bin/uvicorn asr_server:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

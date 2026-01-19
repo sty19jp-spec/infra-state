@@ -1,0 +1,16 @@
+checked_at: "2026-01-19"
+provider: "XserverVPS"
+os: "Ubuntu 22.04"
+plan:
+  name: "VPS 4GB"
+  vcpu: 4
+  memory_gb: 6
+  disk_nvme_gb: 150
+network:
+  public_ip: "85.131.251.66"
+  hostname: "x85-131-251-66.static.xvps.ne.jp"
+ssh:
+  user: "root"
+notes:
+  - "n8n/Dify/NPM は Docker で稼働中"
+  - "ASR は /opt/asr の Python 実行構成（Dockerではない）"
